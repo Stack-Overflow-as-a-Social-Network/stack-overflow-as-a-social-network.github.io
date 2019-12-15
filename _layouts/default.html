@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ site.title }}</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    {% assign user_url = site.url | append: site.baseurl %}
+    {% assign full_base_url = user_url | default: site.github.url %}
+    <link rel="stylesheet" href="{{ "assets/css/main.css" | prepend: full_base_url }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <meta name="apple-mobile-web-app-title" content="Stack Overflow as a Social Network">
+    <meta name="application-name" content="Stack Overflow as a Social Network">
+  </head>
+  <body>
+
+    {% include video.html
+      video_url="assets/video/coding.mp4"
+    %}
+
+    <main class="container">
+      <div class="row">
+        <div class="col-12">
+            {{ content }}
+        </div>
+      </div>
+    </main>
+
+    <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              A project of the Applied Data Analysis course 2019 @ EPFL by
+              <br />
+              <a href="https://github.com/Saibo-creator">Saibo Geng</a>,
+              <a href="https://github.com/skwfz">Severi Rissanen</a>,
+              <a href="https://github.com/dinotuku">Kuan Tung</a> and
+              <a href="https://github.com/nyyeung">David Yeung</a>.
+
+              <!-- <br /><br />
+              <a
+                class="text-secondary"
+                href="https://github.com/who-owns-lausanne/who-owns-lausanne.github.io">
+                <img src="assets/img/octicon.svg"/> This website
+              </a>
+              <br />
+              <a
+                class="text-secondary"
+                href="https://github.com/who-owns-lausanne/who-owns-lausanne/">
+                <img src="assets/img/octicon.svg"/> The associated notebook
+              </a> -->
+            </div>
+          </div>
+        </div>
+      </footer>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</html>
