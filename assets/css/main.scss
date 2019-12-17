@@ -211,7 +211,7 @@ main {
   .footnotes {
     margin-top: 4em;
     padding-top: 1em;
-    border-top: 5px solid #586069;
+    border-top: 5px solid #1D4E89;
     color: #586069;
   }
 }
@@ -219,8 +219,12 @@ main {
 footer {
   margin-top: 2em;
   padding: 5em 0;
-  background-color: #333333;
-  color: white;
+  background-color: #1D4E89;
+  color: #bbb;
+
+  a, a:hover {
+    color: white;
+  }
 
   img {
     width: 20px;

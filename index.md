@@ -217,4 +217,6 @@ According to our interpretations, frontend development seems to be quite popular
 TL;DR Pragramming world is crazy.
 ```
 
-Thank you for reading such a long story!
+Thank you for reading such a long story![^1]
+
+[^1]: Videos are from [coverr](https://coverr.co/).
