@@ -1,8 +1,9 @@
 ---
 ---
 
+$font-family-codes: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-weight-base: 300;
-$font-size-base:  1.25rem;
+$font-size-base: 1.25rem;
 
 $container-max-widths: (
   sm: 500px,
@@ -12,9 +13,9 @@ $container-max-widths: (
 );
 
 $findingcolors: (
-  user: #F08700,
-  time: #EFCA08,
-  country: #00A6A6
+  user: #f08700,
+  time: #efca08,
+  country: #00a6a6
 );
 
 @import "bootstrap";
@@ -23,12 +24,18 @@ $findingcolors: (
   // box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   padding-top: 0.5em;
   margin-bottom: 1rem;
 }
 
-p, li {
+p,
+li {
   line-height: 1.58;
   margin-bottom: 1.5rem;
 }
@@ -59,6 +66,14 @@ iframe {
   border: none;
 }
 
+iframe.map {
+  @include stretch-to-vw;
+}
+
+iframe.plotly {
+  margin-top: -36px;
+}
+
 .intro {
   height: 100vh;
   margin-bottom: 36px;
@@ -69,7 +84,8 @@ iframe {
     object-fit: cover;
   }
 
-  .title, .desp {
+  .title,
+  .desp {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -94,6 +110,15 @@ iframe {
   margin-bottom: 36px;
   color: white;
 
+  h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-weight: 300;
+  }
+
   video {
     height: 100%;
     width: 100%;
@@ -108,13 +133,8 @@ iframe {
     width: 50%;
   }
 
-  h1 {
-    font-size: 4rem;
-    line-height: 1.2;
-  }
-
-  h4 {
-    font-weight: 300;
+  .typewrite {
+    color: white;
   }
 }
 
@@ -123,6 +143,24 @@ main {
     span.#{$classname} {
       color: $color;
     }
+  }
+
+  blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    padding: 1.2em;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 3.5em;
+    line-height: 0.1em;
+    margin-right: 6px;
+    vertical-align: -0.4em;
+  }
+  blockquote p {
+    display: inline;
   }
 
   .finding-legend {
@@ -149,6 +187,17 @@ main {
     }
   }
 
+  .description {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 0.8rem;
+    font-weight: 200;
+  }
+
+  .align-img {
+    text-align: center;
+  }
+
   .footnotes {
     margin-top: 4em;
     padding-top: 1em;
@@ -156,8 +205,6 @@ main {
     color: #586069;
   }
 }
-
-
 
 footer {
   margin-top: 2em;
