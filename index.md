@@ -83,7 +83,7 @@ We thought that it is also interesting to see how are the languages correlated b
 
 To take the analysis further, we tried to do soft clustering on the users and their programming language use with non-negative matrix factorization. The idea was to extract automatically programmer “personas”, archetypes to which all programmers can be divided to, with each programmer having a separate score for each persona. The most important features of the personas are plotted in the following figure (with logarithmic axes, hover mouse over to see the actual values), where we can see the scores for how much is each programming language associated with each type. The types are actually quite possible to interpret intuitively, and we decided to label them as “Frontend Web”, “Python/Scripting”, “C#/General purpose”, “Java/App development”, “Backend Web” and “Low-level”.
 
-<iframe class="plotly map" src="assets/export/programmer_types.html"></iframe>
+<iframe class="plotly stretch" src="assets/export/programmer_types.html"></iframe>
 
 We will come back to these "developer personas" in the third section, where we do a geographical analysis of their distribution, so keep them in mind.
 
@@ -104,8 +104,7 @@ Noticably, it is also rare for a single question to receive more than two answer
 ### Working Days
 To get a feel of how the activity of the site evolves on a weekly basis, the plot below shows an example time period showing the amount of questions asked per day on Stackoverflow. Zoom by selecting an area of the plot to see more closely. We can see a pattern where the amount of questions decreases to almost half during the weekends and rises back again during working days quite reliably. It's also interesting to note that the amount of questions asked also drops to even lower amounts once a year during Christmas and New Year's eve. No other seasonal event can be seen as clearly.
 
-<img style="width: 400px;" src="assets/img/working_days.png" alt="Working Days">
-{: .align-img}
+<iframe class="stretch" src="assets/export/questions_per_day.html"></iframe>
 
 ### Working Hours
 Another way to view the activity is to just look within one day. We can calculate the percentage of questions and answers being posted during working hours and free time. We decided to compare this percentage between users from different countries since it can give us an idea of which country's user prefer to use the site during work.
@@ -128,7 +127,7 @@ People from Netherland, France and United Kingdom seems to be the most active du
 ### Mapping StackOverflow Usage in the World
 > ***On a global level, the USA holds the biggest StackOverflow user commmunity and Sweden is the top country in terms of  penetration as percentage of the population.*** 
 
-<iframe class="plotly map" src="assets/export/active_user.html"></iframe>
+<iframe class="plotly stretch" src="assets/export/active_user.html"></iframe>
 
 On a regional level, we can recognize some patterns in terms of users activenss, the  penetration pf StackOverflow penetration and the size of user community. En particular, we observe from the **_Active User Ratio Map_** that users in developping countries tend to have a higher proportion of active user. We think this is due to the **_survivorship bias_**: People in these region have fewer access to PC and high education, and the Stack Overflow users of these regions can be considered as **_Survivor_**. And a **_Survivor group_** tends to have a higher activeness.
 
@@ -152,7 +151,7 @@ Furthermore, we observe that the number of questions and the number of answers o
 ### Questions and Answering Tendency of Different Country
 We can alse see the distribution of the Stack Overflow participation in a country-view.
 
-<iframe class="plotly map" src="assets/export/question_answer.html"></iframe>
+<iframe class="plotly stretch" src="assets/export/question_answer.html"></iframe>
 
 * **Raw Question / Answer Count ('Questions Per Country' & 'Answers Per Country')** 
 The distribution of number of questions and number of answers provided from different country is relatively similar. The areas that provide more overall contribution is more likely to be those with larger user base of stackoverflow, including United States, India and Australia.
@@ -205,7 +204,7 @@ From the graph, the interaction between different country can be better visualis
 ### Programmer persona distribution
 If you recall the programming language user personas from part 1, we decided to use them to see how are the different types of users distributed around the world by plotting the mean values of the scores of the users for each programming language and country. Only the countries with at least 500 people answering to the survey are shown. 
 
-<iframe class="plotly" class="map" src="assets/export/programmer_types_distribution.html"></iframe>
+<iframe class="plotly" class="stretch" src="assets/export/programmer_types_distribution.html"></iframe>
 
 According to our interpretations, frontend development seems to be quite popular around the world, with Nigeria turning out to be the number one country. It is also quite popular in Sri Lanka, compared to most other places. The Python/Scripting category separates the countries quite a bit more, and USA along with Canada, Finland, China and Chile having some of the most active users. The C# category is, perhaps surprisingly, dominated by South Africa while the scores for China and Nigeria are notably low. The most active country doing Java and App development seems to be Sri Lanka, which leaves most countries actually far behind. It's interesting that there are quite large differences even inside Europe, like Germany having quite a high score and Great Britain having a very low score. Indonesia, Sri Lanka and Bangladesh are some of the countries with people having the most backend developers and surprisingly the highest scores for low-level development come from Nepal and South Korea.
 
