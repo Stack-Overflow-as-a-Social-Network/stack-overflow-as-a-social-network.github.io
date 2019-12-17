@@ -22,7 +22,7 @@ Here are some of the interesting insights. We categorized them into three sectio
 
 {: .finding-legend }
   - {: .user } Visit frequency is correlated to job satisfaction.
-  - {: .user } We are carried by super active stackoverflow users.
+  - {: .user } We are carried by super active Stack Overflow users.
   - {: .user } Experience influences user activity.
   - {: .user } The 6 most important programmer archetypes.
 
@@ -31,7 +31,7 @@ Here are some of the interesting insights. We categorized them into three sectio
   - {: .time } Work hour vs. Free time.
 
   - {: .country } Asian countries have higher active rate.
-  - {: .country } Chinese stackoverflow user mysterious inactiveness.
+  - {: .country } Chinese Stack Overflow user mysterious inactiveness.
   - {: .country } Information is flowing between countries.
   - {: .country } Programmer from different countries are different.
 
@@ -40,12 +40,12 @@ Here are some of the interesting insights. We categorized them into three sectio
   description="What are the users really like?"
   video_url="assets/video/user.mp4"
 %}
-### More stackoverflow, better job success?
-To get the most basic idea of how do people use Stack Overflow, let's plot the visit frequency distribution of the survey respondents. We see that most people answering the survey use stackoverflow quite often. This may of course be due to the sample being somewhat skewed, since active Stackoverflow users are probably more inclined to answer the survey. 
+### More Stack Overflow, better job success?
+To get the most basic idea of how do people use Stack Overflow, let's plot the visit frequency distribution of the survey respondents. We see that most people answering the survey use Stack Overflow quite often. This may of course be due to the sample being somewhat skewed, since active Stack Overflow users are probably more inclined to answer the survey. 
 
 <iframe class="plotly-plot" src="assets/export/visit_frequency.html"></iframe>
 
-It is interesting to see how does the activity on Stack Overflow correlates with the job satisfaction and average salary of the users. From the following figure, we can see that the job satisfaction increases actually quite clearly with more time spent in Stackoverflow. Maybe it's a good idea to search for the answers instead of trying too hard in solving all problems by yourself.
+It is interesting to see how does the activity on Stack Overflow correlates with the job satisfaction and average salary of the users. From the following figure, we can see that the job satisfaction increases actually quite clearly with more time spent in Stack Overflow. Maybe it's a good idea to search for the answers instead of trying too hard in solving all problems by yourself.
 
 <iframe class="plotly-plot" src="assets/export/job_satisfaction_salary.html"></iframe>
 
@@ -66,11 +66,11 @@ The number of questions and answers of each respective user from year 2016 to Se
 <img style="width: 400px;" src="assets/img/ques_per_ans_scatter.png" alt="Graph of question/answers">
 {: .align-img}
 
-A power-law-like distribution can be observed. This distribution is probably due to the experience difference of users of stackoverflow. For more experienced users, they are more likely to answer questions from others. While for beginners or people first exposed to a new technology / framework, they are more likely to ask questions on the relevant topics, thus resulting in such a shape.
+A power-law-like distribution can be observed. This distribution is probably due to the experience difference of users of Stack Overflow. For more experienced users, they are more likely to answer questions from others. While for beginners or people first exposed to a new technology / framework, they are more likely to ask questions on the relevant topics, thus resulting in such a shape.
 
-Another point of notice is that the majority of the users does not participate much (the dense blue area near the origin). There are people who contributes a lot but the joint contribution of small contributors are also relevant in creating the large community of stackoverflow that we experience.
+Another point of notice is that the majority of the users does not participate much (the dense blue area near the origin). There are people who contributes a lot but the joint contribution of small contributors are also relevant in creating the large community of Stack Overflow that we experience.
 
-### Developer Types from Stackoverflow
+### Developer Types from Stack Overflow
 What about the professional lives of the users? To get a feel of the different technologies that Stack Overflow users have, the following plot shows the distribution of the language use, showing languages with at least 4000 users in the survey.
 
 <iframe class="plotly-plot" src="assets/export/language_distribution.html"></iframe>
@@ -97,12 +97,12 @@ Response rate to questions can be analysed in a yearly basis.
 
 <iframe class="plotly-plot" src="assets/export/questions_answered_per_year.html"></iframe>
 
-It is interesting to see that even when the stackoverflow community seems very powerful and 'knows' everything, there are still a noticable portion of around 15-20% of the questions posted on stackoverflow each year which does not receive any answers. They remain unnoticed in the sea of questions. The portion of questions receiving no answers is also increasing in 2016 to 2018 (2019 data is not accurate as the full year data is not available by the time of the plot). 
+It is interesting to see that even when the Stack Overflow community seems very powerful and 'knows' everything, there are still a noticable portion of around 15-20% of the questions posted on Stack Overflow each year which does not receive any answers. They remain unnoticed in the sea of questions. The portion of questions receiving no answers is also increasing in 2016 to 2018 (2019 data is not accurate as the full year data is not available by the time of the plot). 
 
 Noticably, it is also rare for a single question to receive more than two answers, given there could often be multiple ways to achieve the same output.
 
 ### Working Days
-To get a feel of how the activity of the site evolves on a weekly basis, the plot below shows an example time period showing the amount of questions asked per day on Stackoverflow. Zoom by selecting an area of the plot to see more closely. We can see a pattern where the amount of questions decreases to almost half during the weekends and rises back again during working days quite reliably. It's also interesting to note that the amount of questions asked also drops to even lower amounts once a year during Christmas and New Year's eve. No other seasonal event can be seen as clearly.
+To get a feel of how the activity of the site evolves on a weekly basis, the plot below shows an example time period showing the amount of questions asked per day on Stack Overflow. Zoom by selecting an area of the plot to see more closely. We can see a pattern where the amount of questions decreases to almost half during the weekends and rises back again during working days quite reliably. It's also interesting to note that the amount of questions asked also drops to even lower amounts once a year during Christmas and New Year's eve. No other seasonal event can be seen as clearly.
 
 <iframe class="plotly-plot stretch" src="assets/export/questions_per_day.html"></iframe>
 
@@ -124,12 +124,12 @@ People from Netherland, France and United Kingdom seems to be the most active du
   description="How are they distributed around the world?"
   video_url="assets/video/country.mp4"
 %}
-### Mapping StackOverflow Usage in the World
+### Mapping Stack Overflow Usage in the World
 > *On a global level, the USA holds the biggest Stack Overflow user commmunity and Sweden is the top country in terms of  penetration as percentage of the population.*  
 
 <iframe class="plotly-plot stretch" src="assets/export/active_user.html"></iframe>
 
-On a regional level, we can recognize some patterns in terms of users activenss, the  penetration pf StackOverflow penetration and the size of user community. En particular, we observe from the **_Active User Ratio Map_** that users in developping countries tend to have a higher proportion of active user. We think this is due to the **_survivorship bias_**: People in these region have fewer access to PC and high education, and the Stack Overflow users of these regions can be considered as **_Survivor_**. And a **_Survivor group_** tends to have a higher activeness.
+On a regional level, we can recognize some patterns in terms of users activenss, the  penetration pf Stack Overflow penetration and the size of user community. En particular, we observe from the **_Active User Ratio Map_** that users in developping countries tend to have a higher proportion of active user. We think this is due to the **_survivorship bias_**: People in these region have fewer access to PC and high education, and the Stack Overflow users of these regions can be considered as **_Survivor_**. And a **_Survivor group_** tends to have a higher activeness.
 
 On the User Density Map we could clearly recognize some regional patterns for the developpment of IT industry. 
 - The well-known Nordic Tech, a powerful innovation engine in Europe
@@ -138,15 +138,15 @@ On the User Density Map we could clearly recognize some regional patterns for th
 On a regional level, countries can be divided into several groups according to their rates of Stack Overflow penetration and the size of user community. Some most distinct regional groups are the following:
 
 1. **The Giants**: USA, India  
-These two countries have a particular large number of users and their users provide with a significant contribution to the Question & Answer activities on StackOverflow.
+These two countries have a particular large number of users and their users provide with a significant contribution to the Question & Answer activities on Stack Overflow.
 
 2. **Top Performers**: Scandinavian countries, some Western European countries such as Switzerland, Netherlands along with Canada and Australia  
-These countries have showed a very high StackOverflow penetration rates in the survey , indicating a pervasive use of StackOverflow in their groups of programmers.Despite their small countrysize, these countries all together demonstrate a highly efficient and active use of StackOverflow in their countries. 
+These countries have showed a very high   penetration rates in the survey , indicating a pervasive use of Stack Overflow in their groups of programmers.Despite their small countrysize, these countries all together demonstrate a highly efficient and active use of Stack Overflow in their countries. 
 
 3. **Emerging Countries**: Mostly asian countries including Bangladesh,Pakistan,Iran etc.  
 These countries's StackFlower user penetration rates are below the global average . But we can observe a highly emerging trend from their users' particularly active participation.
 
-Furthermore, we observe that the number of questions and the number of answers of users are not always balanced in an area. More concretely, we find that on local level, the  answer question proportion could be very different from the global average and this phenomenon is very common and seems to follow some geographical pattern. We thus come up with a hypothis that users on StackOverflow could have different preference between ask questions and propose answers and this preference follows a geographic distribution. To carry out further analysis on this topic, we try to visualize the answer distribution and question distribution over a world map. The total number of question or answer doesn't give much sense since they are just expanded by the size of local user commity. We then turn our attention to the geo-distribution of answer&question per user. This time we observed that users in Western Europe like Germany, Austria and Finland are more likely to answer to a question on Stack Overflow.
+Furthermore, we observe that the number of questions and the number of answers of users are not always balanced in an area. More concretely, we find that on local level, the  answer question proportion could be very different from the global average and this phenomenon is very common and seems to follow some geographical pattern. We thus come up with a hypothis that users on Stack Overflow could have different preference between ask questions and propose answers and this preference follows a geographic distribution. To carry out further analysis on this topic, we try to visualize the answer distribution and question distribution over a world map. The total number of question or answer doesn't give much sense since they are just expanded by the size of local user commity. We then turn our attention to the geo-distribution of answer&question per user. This time we observed that users in Western Europe like Germany, Austria and Finland are more likely to answer to a question on Stack Overflow.
 
 ### Questions and Answering Tendency of Different Country
 We can alse see the distribution of the Stack Overflow participation in a country-view.
@@ -154,22 +154,22 @@ We can alse see the distribution of the Stack Overflow participation in a countr
 <iframe class="plotly-plot stretch" src="assets/export/question_answer.html"></iframe>
 
 * **Raw Question / Answer Count ('Questions Per Country' & 'Answers Per Country')** 
-The distribution of number of questions and number of answers provided from different country is relatively similar. The areas that provide more overall contribution is more likely to be those with larger user base of stackoverflow, including United States, India and Australia.
+The distribution of number of questions and number of answers provided from different country is relatively similar. The areas that provide more overall contribution is more likely to be those with larger user base of Stack Overflow, including United States, India and Australia.
     
 * **Normalised Question and Answer Count ('Questions Per User Per Country' & 'Answers Per User Per Country')**
 However, the graph becomes more interesting when the raw count is normalised with the user number from each country. Smaller countries, like British Virgin Island (cannot be shown in the plot) or Greenland rise up to top. The two graph, 'Questions Per User Per Country' and 'Answers Per User Per Country' shows the relative tendency of contributing questions and answers from people from different country.
 
 * **Experience Gap - Country View ('Ques / Ans Per User Per Country')**
-A special scope of analysis can also be applied, as shown in the graph 'Ques / Ans Per User Per Country'. It shows the relative likelihood to ask a question than giving an answer. The higher the positive (log) value, the more likely for people in the country to ask questions on stackoverflow. On the other hand, the lower the negative (log) value, the more likely for the users to provide answers from the country.
+A special scope of analysis can also be applied, as shown in the graph 'Ques / Ans Per User Per Country'. It shows the relative likelihood to ask a question than giving an answer. The higher the positive (log) value, the more likely for people in the country to ask questions on Stack Overflow. On the other hand, the lower the negative (log) value, the more likely for the users to provide answers from the country.
 
-In this dimension, countries like Liberia or Niger shows up on top of the positive list, while large countries like United States, Russia, Austrilia or even India. This probably again highights the human capital profolio of the countries on computer science professionals. In countries with more computer science experts, like United States, Australia or India, people tend to answers more questions than actually asking question themselves. While in countries which is developing their professionals, they tend to ask more questions along the way. This shed lights on a new way of looking at stackoverflow participation rate of different country.
+In this dimension, countries like Liberia or Niger shows up on top of the positive list, while large countries like United States, Russia, Austrilia or even India. This probably again highights the human capital profolio of the countries on computer science professionals. In countries with more computer science experts, like United States, Australia or India, people tend to answers more questions than actually asking question themselves. While in countries which is developing their professionals, they tend to ask more questions along the way. This shed lights on a new way of looking at Stack Overflow participation rate of different country.
 
-### Unexpected outliers - China Stackoverflow Usage
-The result of StackOverflow Survey revealed that the number of users of Stackoverflow in China is ranked 5th , thus between germany and Canada, only 1/6 of the usersize of India. This is indeed a surprising result provided the total population, the number of programmers and the rapid rise of internet industry in China. We wonder if there is a reason behind this. 
+### Unexpected outliers - China Stack Overflow Usage
+The result of Stack Overflow Survey revealed that the number of users of Stack Overflow in China is ranked 5th , thus between germany and Canada, only 1/6 of the usersize of India. This is indeed a surprising result provided the total population, the number of programmers and the rapid rise of internet industry in China. We wonder if there is a reason behind this. 
 
 We found out that Stack Overflow required external JavaScript from some other domain including google jquery, which is blocked in China. The site itself is not blocked, so a chinese user can view the content without problem. But if the person wants to log in and ask&answer to a question, the load of external JavaScript would fail. 
 We decide to use a linear regression model to 
-estimate the potential Chinese StackOverflow user number.  We collect the following features for each country:
+estimate the potential Chinese Stack Overflow user number.  We collect the following features for each country:
 1. Internet penertration rate
 2. population
 4. gdp per capita
@@ -177,26 +177,26 @@ estimate the potential Chinese StackOverflow user number.  We collect the follow
 6. Number of universities ranked in global top 10000
 
 After training our model and tuning the hyperparameter, we obtain a prediction.
-With the prediction data, China's StackOverflower size would surpass UK by far and catch up India to become the third largest. 
+With the prediction data, China's Stack Overflower size would surpass UK by far and catch up India to become the third largest. 
 
 <iframe class="plotly-plot" src="assets/export/china_actual_stats_vs_regression.html"></iframe>
 
-From an global viewpoint, the size of Question and Answer data will have an conisderable increase as well, which shall be beneficial to the whole StackOverflow Community. We think this is a pity and hope the scenario could be amliorated in the near future.
+From an global viewpoint, the size of Question and Answer data will have an conisderable increase as well, which shall be beneficial to the whole Stack Overflow Community. We think this is a pity and hope the scenario could be amliorated in the near future.
 
 <iframe class="plotly-plot" src="assets/export/potential_increase_from_china.html"></iframe>
 
-### Global Knowledge Transfer on Stackoverflow
-Since stackoverflow is a global community, it is not surprised to receive answers from the other side of the globe. the interaction between question raiser and answerer in different country can be visualised in the following network graph.
+### Global Knowledge Transfer on Stack Overflow
+Since Stack Overflow is a global community, it is not surprised to receive answers from the other side of the globe. the interaction between question raiser and answerer in different country can be visualised in the following network graph.
 
 <iframe style="height: 500px;" src="assets/export/transfer_graph.html"></iframe>
 
-Note: Only the top ten most active countries on stackoverflow (in terms of question and answer count) and Switzerland is included. Different country of focus can be selected in the dropdown menu.
+Note: Only the top ten most active countries on Stack Overflow (in terms of question and answer count) and Switzerland is included. Different country of focus can be selected in the dropdown menu.
 {: .description }
 
 Note2: The direction of the arrow indicates the number of answers from the source node to questions from the destination nodes. Green links highlights the answers provided by the main focus country to answers of the other countries. 
 {: .description }
 
-Note3: A large portion of the answers in stackoverflow actually have the same source and dest nodes (like US answering questions from the US) and also over 200 other countries But for the purpose of exploring the interaction of different entity and visualisation, only the top ten and Switzerland is shown. 
+Note3: A large portion of the answers in Stack Overflow actually have the same source and dest nodes (like US answering questions from the US) and also over 200 other countries But for the purpose of exploring the interaction of different entity and visualisation, only the top ten and Switzerland is shown. 
 {: .description }
 
 From the graph, the interaction between different country can be better visualised and observed. The activeness of countries like United States and India can still be observed, but other countries also have noticable contribution. Feel free to explore the network graph on different countries! :)
