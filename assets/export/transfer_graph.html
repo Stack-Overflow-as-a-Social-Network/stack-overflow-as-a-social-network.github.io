@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<body style="height: 500px">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Countries
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Australia</a>
+      <a class="dropdown-item" href="#">Canada</a>
+      <a class="dropdown-item" href="#">India</a>
+      <a class="dropdown-item" href="#">Germany</a>
+      <a class="dropdown-item" href="#">France</a>
+      <a class="dropdown-item" href="#">United States</a>
+      <a class="dropdown-item" href="#">United Kingdom</a>
+      <a class="dropdown-item" href="#">Russia</a>
+      <a class="dropdown-item" href="#">Poland</a>
+      <a class="dropdown-item" href="#">Netherlands</a>
+      <a class="dropdown-item" href="#">Switzerland</a>
+    </div>
+  </div>
+</body>
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<style>
+  .dropdown {
+    position: absolute;
+    top: 50%;
+    z-index: 1000;
+  }
+
+  #linkGraph {
+    height: 500px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  .path {
+    fill: none;
+    stroke: #666;
+    /* stroke-width: 5px; */
+  }
+
+  .path.main {
+    stroke: green
+  }
+
+  .path.others {}
+
+  node {
+    fill: #ccc;
+    stroke: #333;
+    stroke-width: 1.5px;
+  }
+
+  text {
+    font: 10px sans-serif;
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  }
+</style>
+
+<script>
+  // inplace json file
+  // example: {"weight":236653,"source":"United States","target":"United States"}
+  var data = [
+    { "weight": 49856, "source": "United States", "target": "India" },
+    { "weight": 31567, "source": "United States", "target": "United Kingdom" },
+    { "weight": 29066, "source": "United States", "target": "Germany" },
+    { "weight": 18583, "source": "United States", "target": "Canada" },
+    { "weight": 15104, "source": "United States", "target": "Australia" },
+    { "weight": 13765, "source": "United States", "target": "France" },
+    { "weight": 9258, "source": "United States", "target": "Netherlands" },
+    { "weight": 8896, "source": "United States", "target": "Russia" },
+    { "weight": 8443, "source": "United States", "target": "Poland" },
+    { "weight": 66928, "source": "India", "target": "United States" },
+    { "weight": 35900, "source": "United Kingdom", "target": "United States" },
+    { "weight": 22267, "source": "Germany", "target": "United States" },
+    { "weight": 21960, "source": "Canada", "target": "United States" },
+    { "weight": 12429, "source": "France", "target": "United States" },
+    { "weight": 11156, "source": "Australia", "target": "United States" },
+    { "weight": 8635, "source": "Netherlands", "target": "United States" },
+    { "weight": 7179, "source": "Poland", "target": "United States" },
+    { "weight": 7053, "source": "Russia", "target": "United States" },
+    { "weight": 28957, "source": "India", "target": "United Kingdom" },
+    { "weight": 28747, "source": "India", "target": "Germany" },
+    { "weight": 15114, "source": "India", "target": "France" },
+    { "weight": 10076, "source": "India", "target": "Australia" },
+    { "weight": 9697, "source": "India", "target": "Netherlands" },
+    { "weight": 9362, "source": "India", "target": "Poland" },
+    { "weight": 8936, "source": "India", "target": "Canada" },
+    { "weight": 8739, "source": "India", "target": "Russia" },
+    { "weight": 18807, "source": "United Kingdom", "target": "India" },
+    { "weight": 13490, "source": "Germany", "target": "India" },
+    { "weight": 8382, "source": "Canada", "target": "India" },
+    { "weight": 8101, "source": "Australia", "target": "India" },
+    { "weight": 8038, "source": "France", "target": "India" },
+    { "weight": 5686, "source": "Netherlands", "target": "India" },
+    { "weight": 5108, "source": "Poland", "target": "India" },
+    { "weight": 4659, "source": "Russia", "target": "India" },
+    { "weight": 11916, "source": "United Kingdom", "target": "Germany" },
+    { "weight": 5770, "source": "United Kingdom", "target": "France" },
+    { "weight": 4849, "source": "United Kingdom", "target": "Canada" },
+    { "weight": 4254, "source": "United Kingdom", "target": "Netherlands" },
+    { "weight": 3718, "source": "United Kingdom", "target": "Australia" },
+    { "weight": 3487, "source": "United Kingdom", "target": "Russia" },
+    { "weight": 3437, "source": "United Kingdom", "target": "Poland" },
+    { "weight": 10209, "source": "Germany", "target": "United Kingdom" },
+    { "weight": 5287, "source": "France", "target": "United Kingdom" },
+    { "weight": 5100, "source": "Canada", "target": "United Kingdom" },
+    { "weight": 3940, "source": "Netherlands", "target": "United Kingdom" },
+    { "weight": 3402, "source": "Australia", "target": "United Kingdom" },
+    { "weight": 3269, "source": "Poland", "target": "United Kingdom" },
+    { "weight": 3007, "source": "Russia", "target": "United Kingdom" },
+    { "weight": 5118, "source": "Germany", "target": "France" },
+    { "weight": 3241, "source": "Germany", "target": "Canada" },
+    { "weight": 3072, "source": "Germany", "target": "Netherlands" },
+    { "weight": 2975, "source": "Germany", "target": "Poland" },
+    { "weight": 2910, "source": "Germany", "target": "Russia" },
+    { "weight": 2408, "source": "Germany", "target": "Australia" },
+    { "weight": 5359, "source": "France", "target": "Germany" },
+    { "weight": 4779, "source": "Canada", "target": "Germany" },
+    { "weight": 3645, "source": "Netherlands", "target": "Germany" },
+    { "weight": 3248, "source": "Poland", "target": "Germany" },
+    { "weight": 3181, "source": "Australia", "target": "Germany" },
+    { "weight": 3136, "source": "Russia", "target": "Germany" },
+    { "weight": 1769, "source": "France", "target": "Canada" },
+    { "weight": 1653, "source": "France", "target": "Netherlands" },
+    { "weight": 1611, "source": "France", "target": "Poland" },
+    { "weight": 1507, "source": "France", "target": "Russia" },
+    { "weight": 1231, "source": "France", "target": "Australia" },
+    { "weight": 2365, "source": "Canada", "target": "France" },
+    { "weight": 1890, "source": "Netherlands", "target": "France" },
+    { "weight": 1709, "source": "Poland", "target": "France" },
+    { "weight": 1566, "source": "Australia", "target": "France" },
+    { "weight": 1505, "source": "Russia", "target": "France" },
+    { "weight": 2521, "source": "Canada", "target": "Australia" },
+    { "weight": 1558, "source": "Canada", "target": "Netherlands" },
+    { "weight": 1510, "source": "Canada", "target": "Russia" },
+    { "weight": 1435, "source": "Canada", "target": "Poland" },
+    { "weight": 1498, "source": "Australia", "target": "Canada" },
+    { "weight": 1214, "source": "Netherlands", "target": "Canada" },
+    { "weight": 1136, "source": "Russia", "target": "Canada" },
+    { "weight": 1099, "source": "Poland", "target": "Canada" },
+    { "weight": 1113, "source": "Australia", "target": "Russia" },
+    { "weight": 1110, "source": "Australia", "target": "Netherlands" },
+    { "weight": 927, "source": "Australia", "target": "Poland" },
+    { "weight": 960, "source": "Netherlands", "target": "Australia" },
+    { "weight": 822, "source": "Russia", "target": "Australia" },
+    { "weight": 783, "source": "Poland", "target": "Australia" },
+    { "weight": 1079, "source": "Netherlands", "target": "Poland" },
+    { "weight": 999, "source": "Netherlands", "target": "Russia" },
+    { "weight": 1030, "source": "Poland", "target": "Netherlands" },
+    { "weight": 997, "source": "Russia", "target": "Netherlands" },
+    { "weight": 4211, "source": "Switzerland", "target": "United States" },
+    { "weight": 2327, "source": "Switzerland", "target": "India" },
+    { "weight": 2119, "source": "Switzerland", "target": "Germany" },
+    { "weight": 1942, "source": "Switzerland", "target": "United Kingdom" },
+    { "weight": 862, "source": "Switzerland", "target": "France" },
+    { "weight": 621, "source": "Switzerland", "target": "Netherlands" },
+    { "weight": 589, "source": "Switzerland", "target": "Canada" },
+    { "weight": 536, "source": "Switzerland", "target": "Russia" },
+    { "weight": 502, "source": "Switzerland", "target": "Australia" },
+    { "weight": 5212, "source": "India", "target": "Switzerland" },
+    { "weight": 4775, "source": "United States", "target": "Switzerland" },
+    { "weight": 1997, "source": "United Kingdom", "target": "Switzerland" },
+    { "weight": 1855, "source": "Germany", "target": "Switzerland" },
+    { "weight": 943, "source": "France", "target": "Switzerland" },
+    { "weight": 810, "source": "Canada", "target": "Switzerland" },
+    { "weight": 639, "source": "Australia", "target": "Switzerland" },
+    { "weight": 602, "source": "Netherlands", "target": "Switzerland" },
+    { "weight": 535, "source": "Russia", "target": "Switzerland" }
+  ]
+
+  var nodes = {}
+
+  // defining the focusing country
+  var focused_country = "United States"
+
+  function getLinks(name) {
+    return data.filter(link => link.source == name || link.target == name)
+  }
+  var links = getLinks(focused_country)
+
+  // define the normalizer for link weight
+  function find_max(list) {
+    let max = 0
+    for (let i = 0; i < list.length; ++i) {
+      if (Math.sqrt(list[i].weight) > max) {
+        max = Math.sqrt(list[i].weight)
+      }
+    }
+    return max
+  }
+  var normalizer = find_max(links)
+
+
+  links.forEach(link => {
+    link.source = nodes[link.source] || (nodes[link.source] = { name: link.source })
+    link.target = nodes[link.target] || (nodes[link.target] = { name: link.target })
+  })
+
+  var width = 960,
+    height = 500
+
+  // defining the force directed graph
+  var force = d3.layout.force()
+    .nodes(d3.values(nodes))
+    .links(links)
+    .size([width, height])
+    .linkDistance(150)
+    .charge(-300)
+    .on("tick", tick)
+    .start()
+
+  var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr('id', 'linkGraph')
+
+  // build the arrow.
+  svg.append("defs").selectAll("marker")
+    .data(["end"])      // Different link/path types can be defined here
+    .enter().append("marker")    // This section adds in the arrows
+    .attr("id", d => d)
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 24)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 2.5)
+    .attr("markerHeight", 2.5)
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M0,-5L10,0L0,5")
+
+  var path = svg.append("g").selectAll("path")
+    .data(force.links())
+    .enter().append("path")
+    .attr("class", d => "path " + (d.source.name == focused_country ? "main" : "others"))
+    .attr("marker-end", d => { return "url(#end)" })
+    .attr("stroke-width", d => (Math.sqrt(d.weight) / normalizer * 6))
+
+  // fill the labels of edges
+  var edgepaths = svg.selectAll(".edgepath")
+    .data(links)
+    .enter()
+    .append('path')
+    .attr({
+      'd': d => 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y,
+      'class': 'edgepath',
+      'fill-opacity': 0,
+      'stroke-opacity': 0,
+      'fill': 'blue',
+      'stroke': 'red',
+      'id': (d, i) => 'edgepath' + i
+    }).style("pointer-events", "none");
+
+  var edgelabels = svg.selectAll(".edgelabel")
+    .data(links)
+    .enter()
+    .append('text')
+    .style("pointer-events", "none")
+    .attr({
+      'class': 'edgelabel',
+      'id': (d, i) => '#edgepath' + i,
+      'dx': 55,
+      'dy': -30,
+      'font-size': 10,
+      'fill': '#a7a4a4'
+    })
+
+  edgelabels.append('textPath')
+    .attr('xlink:href', (d, i) => '#edgepath' + i)
+    .style("pointer-events", "none")
+    .text(d => d.weight)
+
+  var node = svg.append("g").selectAll("circle")
+    .data(force.nodes())
+    .enter().append("circle")
+    .attr("r", d => d.name == focused_country ? 10 : 6)
+    .call(force.drag)
+
+  var text = svg.append("g").selectAll("text")
+    .data(force.nodes())
+    .enter().append("text")
+    .attr("x", 8)
+    .attr("y", ".31em")
+    .text(d => d.name)
+
+  function tick() {
+    path.attr("d", linkArc)
+    node.attr("transform", transform)
+      .style("fill", color)
+    text.attr("transform", transform)
+
+    edgepaths.attr('d', d => 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y)
+
+    edgelabels.attr('transform', function (d, i) {
+      if (d.target.x < d.source.x) {
+        bbox = this.getBBox();
+        rx = bbox.x + bbox.width / 2;
+        ry = bbox.y + bbox.height / 2;
+        return 'rotate(180 ' + rx + ' ' + ry + ')';
+      }
+      else {
+        return 'rotate(0)';
+      }
+    })
+  }
+
+  // Color center node orange, others pale blue
+  function color(d) {
+    return d.name == focused_country ? "#fd8d3c" : "#c6dbef"
+  }
+
+  function linkArc(d) {
+    var dx = d.target.x - d.source.x,
+      dy = d.target.y - d.source.y,
+      dr = Math.sqrt(dx * dx + dy * dy);
+    return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+  }
+
+  function transform(d) {
+    return "translate(" + d.x + "," + d.y + ")";
+  }
+
+  d3.select("#changedata")
+    .on("click", function () {
+      update_country('Poland')
+    })
+
+  function update_country(newFocusedCountry) {
+    // redefine data
+    data = [
+      { "weight": 49856, "source": "United States", "target": "India" },
+      { "weight": 31567, "source": "United States", "target": "United Kingdom" },
+      { "weight": 29066, "source": "United States", "target": "Germany" },
+      { "weight": 18583, "source": "United States", "target": "Canada" },
+      { "weight": 15104, "source": "United States", "target": "Australia" },
+      { "weight": 13765, "source": "United States", "target": "France" },
+      { "weight": 9258, "source": "United States", "target": "Netherlands" },
+      { "weight": 8896, "source": "United States", "target": "Russia" },
+      { "weight": 8443, "source": "United States", "target": "Poland" },
+      { "weight": 66928, "source": "India", "target": "United States" },
+      { "weight": 35900, "source": "United Kingdom", "target": "United States" },
+      { "weight": 22267, "source": "Germany", "target": "United States" },
+      { "weight": 21960, "source": "Canada", "target": "United States" },
+      { "weight": 12429, "source": "France", "target": "United States" },
+      { "weight": 11156, "source": "Australia", "target": "United States" },
+      { "weight": 8635, "source": "Netherlands", "target": "United States" },
+      { "weight": 7179, "source": "Poland", "target": "United States" },
+      { "weight": 7053, "source": "Russia", "target": "United States" },
+      { "weight": 28957, "source": "India", "target": "United Kingdom" },
+      { "weight": 28747, "source": "India", "target": "Germany" },
+      { "weight": 15114, "source": "India", "target": "France" },
+      { "weight": 10076, "source": "India", "target": "Australia" },
+      { "weight": 9697, "source": "India", "target": "Netherlands" },
+      { "weight": 9362, "source": "India", "target": "Poland" },
+      { "weight": 8936, "source": "India", "target": "Canada" },
+      { "weight": 8739, "source": "India", "target": "Russia" },
+      { "weight": 18807, "source": "United Kingdom", "target": "India" },
+      { "weight": 13490, "source": "Germany", "target": "India" },
+      { "weight": 8382, "source": "Canada", "target": "India" },
+      { "weight": 8101, "source": "Australia", "target": "India" },
+      { "weight": 8038, "source": "France", "target": "India" },
+      { "weight": 5686, "source": "Netherlands", "target": "India" },
+      { "weight": 5108, "source": "Poland", "target": "India" },
+      { "weight": 4659, "source": "Russia", "target": "India" },
+      { "weight": 11916, "source": "United Kingdom", "target": "Germany" },
+      { "weight": 5770, "source": "United Kingdom", "target": "France" },
+      { "weight": 4849, "source": "United Kingdom", "target": "Canada" },
+      { "weight": 4254, "source": "United Kingdom", "target": "Netherlands" },
+      { "weight": 3718, "source": "United Kingdom", "target": "Australia" },
+      { "weight": 3487, "source": "United Kingdom", "target": "Russia" },
+      { "weight": 3437, "source": "United Kingdom", "target": "Poland" },
+      { "weight": 10209, "source": "Germany", "target": "United Kingdom" },
+      { "weight": 5287, "source": "France", "target": "United Kingdom" },
+      { "weight": 5100, "source": "Canada", "target": "United Kingdom" },
+      { "weight": 3940, "source": "Netherlands", "target": "United Kingdom" },
+      { "weight": 3402, "source": "Australia", "target": "United Kingdom" },
+      { "weight": 3269, "source": "Poland", "target": "United Kingdom" },
+      { "weight": 3007, "source": "Russia", "target": "United Kingdom" },
+      { "weight": 5118, "source": "Germany", "target": "France" },
+      { "weight": 3241, "source": "Germany", "target": "Canada" },
+      { "weight": 3072, "source": "Germany", "target": "Netherlands" },
+      { "weight": 2975, "source": "Germany", "target": "Poland" },
+      { "weight": 2910, "source": "Germany", "target": "Russia" },
+      { "weight": 2408, "source": "Germany", "target": "Australia" },
+      { "weight": 5359, "source": "France", "target": "Germany" },
+      { "weight": 4779, "source": "Canada", "target": "Germany" },
+      { "weight": 3645, "source": "Netherlands", "target": "Germany" },
+      { "weight": 3248, "source": "Poland", "target": "Germany" },
+      { "weight": 3181, "source": "Australia", "target": "Germany" },
+      { "weight": 3136, "source": "Russia", "target": "Germany" },
+      { "weight": 1769, "source": "France", "target": "Canada" },
+      { "weight": 1653, "source": "France", "target": "Netherlands" },
+      { "weight": 1611, "source": "France", "target": "Poland" },
+      { "weight": 1507, "source": "France", "target": "Russia" },
+      { "weight": 1231, "source": "France", "target": "Australia" },
+      { "weight": 2365, "source": "Canada", "target": "France" },
+      { "weight": 1890, "source": "Netherlands", "target": "France" },
+      { "weight": 1709, "source": "Poland", "target": "France" },
+      { "weight": 1566, "source": "Australia", "target": "France" },
+      { "weight": 1505, "source": "Russia", "target": "France" },
+      { "weight": 2521, "source": "Canada", "target": "Australia" },
+      { "weight": 1558, "source": "Canada", "target": "Netherlands" },
+      { "weight": 1510, "source": "Canada", "target": "Russia" },
+      { "weight": 1435, "source": "Canada", "target": "Poland" },
+      { "weight": 1498, "source": "Australia", "target": "Canada" },
+      { "weight": 1214, "source": "Netherlands", "target": "Canada" },
+      { "weight": 1136, "source": "Russia", "target": "Canada" },
+      { "weight": 1099, "source": "Poland", "target": "Canada" },
+      { "weight": 1113, "source": "Australia", "target": "Russia" },
+      { "weight": 1110, "source": "Australia", "target": "Netherlands" },
+      { "weight": 927, "source": "Australia", "target": "Poland" },
+      { "weight": 960, "source": "Netherlands", "target": "Australia" },
+      { "weight": 822, "source": "Russia", "target": "Australia" },
+      { "weight": 783, "source": "Poland", "target": "Australia" },
+      { "weight": 1079, "source": "Netherlands", "target": "Poland" },
+      { "weight": 999, "source": "Netherlands", "target": "Russia" },
+      { "weight": 1030, "source": "Poland", "target": "Netherlands" },
+      { "weight": 997, "source": "Russia", "target": "Netherlands" },
+      { "weight": 4211, "source": "Switzerland", "target": "United States" },
+      { "weight": 2327, "source": "Switzerland", "target": "India" },
+      { "weight": 2119, "source": "Switzerland", "target": "Germany" },
+      { "weight": 1942, "source": "Switzerland", "target": "United Kingdom" },
+      { "weight": 862, "source": "Switzerland", "target": "France" },
+      { "weight": 621, "source": "Switzerland", "target": "Netherlands" },
+      { "weight": 589, "source": "Switzerland", "target": "Canada" },
+      { "weight": 536, "source": "Switzerland", "target": "Russia" },
+      { "weight": 502, "source": "Switzerland", "target": "Australia" },
+      { "weight": 5212, "source": "India", "target": "Switzerland" },
+      { "weight": 4775, "source": "United States", "target": "Switzerland" },
+      { "weight": 1997, "source": "United Kingdom", "target": "Switzerland" },
+      { "weight": 1855, "source": "Germany", "target": "Switzerland" },
+      { "weight": 943, "source": "France", "target": "Switzerland" },
+      { "weight": 810, "source": "Canada", "target": "Switzerland" },
+      { "weight": 639, "source": "Australia", "target": "Switzerland" },
+      { "weight": 602, "source": "Netherlands", "target": "Switzerland" },
+      { "weight": 535, "source": "Russia", "target": "Switzerland" }
+    ]
+
+    var new_links = getLinks(newFocusedCountry)
+    focused_country = newFocusedCountry
+    normalizer = find_max(new_links)
+    new_links.forEach(link => {
+      link.source = nodes[link.source] || (nodes[link.source] = { name: link.source })
+      link.target = nodes[link.target] || (nodes[link.target] = { name: link.target })
+    })
+
+    var svg = d3.select("body").select("svg")
+    svg.selectAll('g').remove()
+
+    force.links(new_links)
+      .nodes(d3.values(nodes))
+      .size([width, height])
+      .linkDistance(150)
+      .charge(-300)
+      .on("tick", tick)
+      .start()
+
+    svg.selectAll('defs').remove()
+    svg.append("defs").selectAll("marker")
+      .data(["end"])      // Different link/path types can be defined here
+      .enter().append("marker")    // This section adds in the arrows
+      .attr("id", d => d)
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 24)
+      .attr("refY", -1.5)
+      .attr("markerWidth", 2.5)
+      .attr("markerHeight", 2.5)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5")
+
+    // svg.selectAll('path').remove()
+    path = svg.append("g").selectAll("path")
+      .data(force.links())
+      .enter().append("path")
+      .attr("class", d => "path " + (d.source.name == focused_country ? "main" : "others"))
+      .attr("marker-end", d => { return "url(#end)" })
+      .attr("stroke-width", d => (Math.sqrt(d.weight) / normalizer * 6))
+
+    // svg.selectAll('.edgepath').remove()
+    edgepath = svg.selectAll(".edgepath")
+      .data(new_links)
+      .enter()
+      .append('path')
+      .attr({
+        'd': d => 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y,
+        'class': 'edgepath',
+        'fill-opacity': 0,
+        'stroke-opacity': 0,
+        'fill': 'blue',
+        'stroke': 'red',
+        'id': (d, i) => 'edgepath' + i
+      }).style("pointer-events", "none")
+
+
+    edgelabels.remove()
+    edgelabels = svg.selectAll(".edgelabel")
+      .data(new_links)
+      .enter()
+      .append('text')
+      .style("pointer-events", "none")
+      .attr({
+        'class': 'edgelabel',
+        'id': (d, i) => '#target_edgepath' + i,
+        'dx': 55,
+        'dy': -30,
+        'font-size': 10,
+        'fill': '#a7a4a4'
+      })
+
+    edgelabels.selectAll('textPath').remove()
+    edgelabels.append('textPath')
+      .attr('xlink:href', (d, i) => '#edgepath' + i)
+      .style("pointer-events", "none")
+      .text(d => d.weight)
+
+
+    // svg.selectAll('circle').remove()
+    node = svg.append("g").selectAll("circle")
+      .data(force.nodes())
+      .enter().append("circle")
+      .attr("r", d => d.name == focused_country ? 10 : 6)
+      .call(force.drag)
+
+    text = svg.append("g").selectAll("text")
+      .data(force.nodes())
+      .enter().append("text")
+      .attr("x", 8)
+      .attr("y", ".31em")
+      .text(d => d.name)
+  }
+
+  $('.dropdown-item').on("click", function (e) {
+    update_country(e.target.text)
+  })
+
+</script>
