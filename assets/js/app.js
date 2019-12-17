@@ -2,7 +2,7 @@ const intro = document.querySelector(".intro");
 const video = intro.querySelector("video");
 const text = intro.querySelector(".title");
 const text2 = intro.querySelector(".desp");
-const text3 = intro.querySelector("p");
+const text3 = intro.querySelector("h5");
 //END SECTION
 // const section = document.querySelector("section");
 // const end = section.querySelector("h1");
