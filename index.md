@@ -153,7 +153,14 @@ These countries's StackFlower user penetration rates are below the global averag
 
 Furthermore, we observe that the number of questions and the number of answers of users are not always balanced in an area. More concretely, we find that on local level, the  answer question proportion could be very different from the global average and this phenomenon is very common and seems to follow some geographical pattern. We thus come up with a hypothis that users on Stack Overflow could have different preference between ask questions and propose answers and this preference follows a geographic distribution. 
 
-To carry out further analysis on this topic, we try to visualize the answer distribution and question distribution over a world map. The total number of question or answer doesn't give much sense since they are just expanded by the size of local user commity. We then turn our attention to the geo-distribution of answer&question per user. This time we observed that users in Western Europe like Germany, Austria and Finland are more likely to answer to a question on Stack Overflow.
+To carry out further analysis on this topic, we try to visualize the answer distribution and question distribution over a world map. The total number of question or answer doesn’t give much sense since they are just expanded by the size of local user commity. We turn our attention to the answer per user map, question per user map and question-answer ratio map. We have the following obervations:
+
+- Users in Western Europe like Germany, Austria and Finland are more  active  to answer questions. On a large scale, users in highly industrialized are more likely to use StackOverflow as a platform to spread their knowledge.
+- Users in the third tend to ask more questions than to anwer questions.
+
+Given the large young programmers population and the higher likelihood for a junior programmer to ecounter problems, the third world countries show a knowlage import tendency. Meanwhile, industrilized countries play the role of exporter, sharing knowledge on StackOverflow.
+
+> *We can see a clear global interaction pattern from the StackOverflow user's behavior, which displays a global flux of programming knowledge.*
 
 ### Questions and Answering Tendency of Different Country
 We can alse see the distribution of the Stack Overflow participation in a country-view.
@@ -172,19 +179,20 @@ A special scope of analysis can also be applied, as shown in the graph 'Ques / A
 In this dimension, countries like Liberia or Niger shows up on top of the positive list, while large countries like United States, Russia, Austrilia or even India. This probably again highights the human capital profolio of the countries on computer science professionals. In countries with more computer science experts, like United States, Australia or India, people tend to answers more questions than actually asking question themselves. While in countries which is developing their professionals, they tend to ask more questions along the way. This shed lights on a new way of looking at Stack Overflow participation rate of different country.
 
 ### Unexpected outliers - China Stack Overflow Usage
-The result of Stack Overflow Survey revealed that the number of users of Stack Overflow in China is ranked 5th , thus between germany and Canada, only 1/6 of the usersize of India. This is indeed a surprising result provided the total population, the number of programmers and the rapid rise of internet industry in China. We wonder if there is a reason behind this. 
+The result of StackOverflow Survey revealed that the number of users of Stackoverflow in China is ranked 5th, thus between germany and Canada, only 1/6 of the usersize of India. This is indeed a surprising result provided the total population, the number of programmers and the rapid rise of internet industry in China. We wonder if there is a reason behind this. 
+
+<iframe style="height: 240px;" src="assets/export/user_number.html"></iframe>
 
 We found out that Stack Overflow required external JavaScript from some other domain including google jquery, which is blocked in China. The site itself is not blocked, so a chinese user can view the content without problem. But if the person wants to log in and ask&answer to a question, the load of external JavaScript would fail. 
-We decide to use a linear regression model to 
-estimate the potential Chinese Stack Overflow user number.  We collect the following features for each country:
+
+We decide to use a linear regression model to estimate the potential Chinese StackOverflow user number. We collect the following features for each country:
 1. Internet penertration rate
 2. population
 4. gdp per capita
 5. Average English Level
 6. Number of universities ranked in global top 10000
 
-After training our model and tuning the hyperparameter, we obtain a prediction.
-With the prediction data, China's Stack Overflower size would surpass UK by far and catch up India to become the third largest. 
+After training our model and tuning the hyperparameter, we obtain a prediction. With the prediction data, China's Stack Overflower size would surpass UK by far and catch up India to become the third largest. 
 
 <iframe class="plotly-plot" src="assets/export/china_actual_stats_vs_regression.html"></iframe>
 

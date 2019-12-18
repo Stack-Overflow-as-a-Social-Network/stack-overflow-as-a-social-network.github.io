@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/handsontable@7.3.0/dist/handsontable.full.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/handsontable@7.3.0/dist/handsontable.full.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div id="example"></div>
+</body>
+<script>
+  var data = [{"country":"United States","UserNumber":529504},{"country":"India","UserNumber":491015},{"country":"United Kingdom","UserNumber":123561},{"country":"Germany","UserNumber":93748},{"country":"China","UserNumber":81546},{"country":"Canada","UserNumber":73710},{"country":"Brazil","UserNumber":67294},{"country":"France","UserNumber":60413},{"country":"Russian Federation","UserNumber":51170},{"country":"Australia","UserNumber":47340},{"country":"Pakistan","UserNumber":45847},{"country":"Poland","UserNumber":39216},{"country":"Netherlands","UserNumber":36848},{"country":"Spain","UserNumber":36762},{"country":"Indonesia","UserNumber":36425},{"country":"Italy","UserNumber":34944},{"country":"Turkey","UserNumber":34443},{"country":"Philippines","UserNumber":33008},{"country":"Vietnam","UserNumber":31991},{"country":"Bangladesh","UserNumber":31021},{"country":"Ukraine","UserNumber":28742},{"country":"Sweden","UserNumber":23028},{"country":"Egypt","UserNumber":22113},{"country":"Mexico","UserNumber":22104},{"country":"Israel","UserNumber":19310},{"country":"South Africa","UserNumber":18247},{"country":"Romania","UserNumber":18032},{"country":"Nigeria","UserNumber":15691},{"country":"Nigeria","UserNumber":15691},{"country":"Belgium","UserNumber":15495},{"country":"Switzerland","UserNumber":15080},{"country":"Argentina","UserNumber":14892},{"country":"Singapore","UserNumber":14428},{"country":"Sri Lanka","UserNumber":14396},{"country":"Japan","UserNumber":14363},{"country":"Malaysia","UserNumber":14354},{"country":"Portugal","UserNumber":13317},{"country":"Denmark","UserNumber":12845},{"country":"Ireland {Republic}","UserNumber":12545},{"country":"Austria","UserNumber":11677},{"country":"Colombia","UserNumber":11233},{"country":"Greece","UserNumber":10847},{"country":"New Zealand","UserNumber":10472},{"country":"Morocco","UserNumber":10363},{"country":"Norway","UserNumber":10207},{"country":"Nepal","UserNumber":9555},{"country":"Thailand","UserNumber":9493},{"country":"Hungary","UserNumber":8895},{"country":"Bulgaria","UserNumber":8794},{"country":"Kenya","UserNumber":8364},{"country":"Tunisia","UserNumber":8191},{"country":"Finland","UserNumber":7742},{"country":"Belarus","UserNumber":7419},{"country":"Hong Kong","UserNumber":7240},{"country":"United Arab Emirates","UserNumber":7153},{"country":"Chile","UserNumber":7019},{"country":"Algeria","UserNumber":5874},{"country":"Saudi Arabia","UserNumber":5408},{"country":"Peru","UserNumber":5049},{"country":"Croatia","UserNumber":4775},{"country":"Lithuania","UserNumber":4403},{"country":"Uruguay","UserNumber":4251},{"country":"Slovakia","UserNumber":4214},{"country":"Ghana","UserNumber":3709},{"country":"Jordan","UserNumber":3402},{"country":"Slovenia","UserNumber":2948},{"country":"Lebanon","UserNumber":2907},{"country":"Costa Rica","UserNumber":2734},{"country":"Latvia","UserNumber":2690},{"country":"Georgia","UserNumber":2626},{"country":"Estonia","UserNumber":2620},{"country":"Kazakhstan","UserNumber":2604},{"country":"Armenia","UserNumber":2596},{"country":"Cambodia","UserNumber":2399},{"country":"Bosnia Herzegovina","UserNumber":2371},{"country":"Iraq","UserNumber":2284},{"country":"Ecuador","UserNumber":2192},{"country":"Uganda","UserNumber":2150},{"country":"Dominican Republic","UserNumber":2142},{"country":"Azerbaijan","UserNumber":2078},{"country":"Ethiopia","UserNumber":2033},{"country":"Somalia","UserNumber":1958},{"country":"Macedonia","UserNumber":1921},{"country":"Cuba","UserNumber":1684},{"country":"Cameroon","UserNumber":1590},{"country":"Albania","UserNumber":1562},{"country":"Iceland","UserNumber":1532},{"country":"Zimbabwe","UserNumber":1515},{"country":"Uzbekistan","UserNumber":1512},{"country":"Guatemala","UserNumber":1453},{"country":"Malta","UserNumber":1287},{"country":"Cyprus","UserNumber":1258},{"country":"Luxembourg","UserNumber":1016},{"country":"El Salvador","UserNumber":1013},{"country":"Sudan","UserNumber":935},{"country":"Qatar","UserNumber":931},{"country":"Mongolia","UserNumber":927},{"country":"Puerto Rico","UserNumber":924},{"country":"Mauritius","UserNumber":904},{"country":"Jamaica","UserNumber":898},{"country":"Madagascar","UserNumber":891},{"country":"Panama","UserNumber":830},{"country":"Paraguay","UserNumber":781},{"country":"Mozambique","UserNumber":759},{"country":"Honduras","UserNumber":676},{"country":"Oman","UserNumber":675},{"country":"Kyrgyzstan","UserNumber":650},{"country":"Zambia","UserNumber":637},{"country":"Yemen","UserNumber":606},{"country":"Bahrain","UserNumber":599},{"country":"Rwanda","UserNumber":580},{"country":"Nicaragua","UserNumber":544},{"country":"Trinidad & Tobago","UserNumber":460},{"country":"Botswana","UserNumber":436},{"country":"Montenegro","UserNumber":416},{"country":"Namibia","UserNumber":333},{"country":"Benin","UserNumber":318},{"country":"Malawi","UserNumber":293},{"country":"Togo","UserNumber":232},{"country":"Fiji","UserNumber":206},{"country":"Burkina","UserNumber":136},{"country":"Barbados","UserNumber":115},{"country":"Liechtenstein","UserNumber":46},{"country":"Dominica","UserNumber":31},{"country":"San Marino","UserNumber":30}];
+
+  var container = document.getElementById('example');
+  var hot = new Handsontable(container, {
+    data: data,
+    dataSchema: {country: null, UserNumber: null},
+    rowHeaders: true,
+    colHeaders: ['Country', '# of users'],
+    columns: [
+      {data: 'country', filters: false},
+      {data: 'UserNumber', type: 'numeric',},
+    ],
+    filters: true,
+    dropdownMenu: ['filter_by_condition', 'filter_action_bar'],
+    columnSorting: {
+      sortEmptyCells: true,
+      initialConfig: {
+        column: 1,
+        sortOrder: 'dec'
+      }
+    },
+    readOnly: true,
+    licenseKey: 'non-commercial-and-evaluation'
+  });
+
+  // access to filters plugin instance
+  const filtersPlugin = hot.getPlugin('filters');
+
+  // add filter "Greater than" 100000 to column at index 3
+  filtersPlugin.addCondition(1, 'gt', [60000]);
+  filtersPlugin.filter();
+</script>
+</html>
