@@ -13,9 +13,12 @@ The main idea of our project is to study the different user communities across t
 
 ## Dataset
 We used the following datasets.
-- **Stack Overflow Annual Developper Survey** ([link](https://console.cloud.google.com/marketplace/details/stack-exchange/stack-overflow)): They ask questions like Do you code as a hobby, Are you currently enrolled in a formal, degree-granting college or university program and many other kinds of questions. The respondents were recruited through onsite messaging, blog posts, email lists, meta posts, banner ads, and social media posts. According to the documentation, highly engaged users on Stack Overflow were more likely to notice the links for the survey and click to begin it. The dataset is in CSV format and about 50 - 200MB per year.
-- **Stack Overflow Data from Google BigQuery** ([link](https://insights.stackoverflow.com/survey)): The dataset is hosted in Google BigQuery and we get 1TB of free BigQuery processing every month which means we can get 1TB of data per month. There are data of users, posts, comments, tags, votes, and badges from 2008 to 2019. We can use SQL queries to get the data we want and use the download feature to save it as CSV or JSON file. Stack Overflow Annual Developer Survey
-- **World Bank Open Data /UN Data/ Kaggle World Bank**: short description
+- **Stack Overflow Annual Developper Survey** ([link](https://console.cloud.google.com/marketplace/details/stack-exchange/stack-overflow)):  
+They ask questions like Do you code as a hobby, Are you currently enrolled in a formal, degree-granting college or university program and many other kinds of questions. The respondents were recruited through onsite messaging, blog posts, email lists, meta posts, banner ads, and social media posts. According to the documentation, highly engaged users on Stack Overflow were more likely to notice the links for the survey and click to begin it. The dataset is in CSV format and about 50 - 200MB per year.
+- **Stack Overflow Data from Google BigQuery** ([link](https://insights.stackoverflow.com/survey)):  
+The dataset is hosted in Google BigQuery and we get 1TB of free BigQuery processing every month which means we can get 1TB of data per month. There are data of users, posts, comments, tags, votes, and badges from 2008 to 2019. We can use SQL queries to get the data we want and use the download feature to save it as CSV or JSON file. Stack Overflow Annual Developer Survey
+- **World Bank Open Data /UN Data/ Kaggle World Bank**:  
+short description
 
 ## Interesting Findings
 Here are some of the interesting insights. We categorized them into three sections, <span class="user">user</span>, <span class="time">time</span> and <span class="country">country</span> related.
@@ -52,7 +55,7 @@ It is interesting to see how does the activity on Stack Overflow correlates with
 ### Super Contributor of Stack Overflow
 When searching for solution on Stack Overflow, have you ever wonder who is providing the answers that you are looking for?
 
-We analyse the number of questions and answers from 2016 to Sep 201 and group them per unique user id.
+We analyse the number of questions and answers from 2016 to Sep 2019 and group them per unique user id.
 
 <iframe class="plotly-plot" src="assets/export/q_a_per_user.html"></iframe>
 
@@ -81,7 +84,9 @@ We thought that it is also interesting to see how are the languages correlated b
 
 <img src="assets/img/correlation_of_language.png" alt="Correlation of Language Use">
 
-To take the analysis further, we tried to do soft clustering on the users and their programming language use with non-negative matrix factorization. The idea was to extract automatically programmer “personas”, archetypes to which all programmers can be divided to, with each programmer having a separate score for each persona. The most important features of the personas are plotted in the following figure (with logarithmic axes, hover mouse over to see the actual values), where we can see the scores for how much is each programming language associated with each type. The types are actually quite possible to interpret intuitively, and we decided to label them as “Frontend Web”, “Python/Scripting”, “C#/General purpose”, “Java/App development”, “Backend Web” and “Low-level”.
+To take the analysis further, we tried to do soft clustering on the users and their programming language use with non-negative matrix factorization. The idea was to extract automatically programmer “personas”, archetypes to which all programmers can be divided to, with each programmer having a separate score for each persona.
+
+The most important features of the personas are plotted in the following figure (with logarithmic axes, hover mouse over to see the actual values), where we can see the scores for how much is each programming language associated with each type. The types are actually quite possible to interpret intuitively, and we decided to label them as “Frontend Web”, “Python/Scripting”, “C#/General purpose”, “Java/App development”, “Backend Web” and “Low-level”.
 
 <iframe class="plotly-plot stretch" src="assets/export/programmer_types.html"></iframe>
 
@@ -146,7 +151,9 @@ These countries have showed a very high   penetration rates in the survey , indi
 3. **Emerging Countries**: Mostly asian countries including Bangladesh,Pakistan,Iran etc.  
 These countries's StackFlower user penetration rates are below the global average . But we can observe a highly emerging trend from their users' particularly active participation.
 
-Furthermore, we observe that the number of questions and the number of answers of users are not always balanced in an area. More concretely, we find that on local level, the  answer question proportion could be very different from the global average and this phenomenon is very common and seems to follow some geographical pattern. We thus come up with a hypothis that users on Stack Overflow could have different preference between ask questions and propose answers and this preference follows a geographic distribution. To carry out further analysis on this topic, we try to visualize the answer distribution and question distribution over a world map. The total number of question or answer doesn't give much sense since they are just expanded by the size of local user commity. We then turn our attention to the geo-distribution of answer&question per user. This time we observed that users in Western Europe like Germany, Austria and Finland are more likely to answer to a question on Stack Overflow.
+Furthermore, we observe that the number of questions and the number of answers of users are not always balanced in an area. More concretely, we find that on local level, the  answer question proportion could be very different from the global average and this phenomenon is very common and seems to follow some geographical pattern. We thus come up with a hypothis that users on Stack Overflow could have different preference between ask questions and propose answers and this preference follows a geographic distribution. 
+
+To carry out further analysis on this topic, we try to visualize the answer distribution and question distribution over a world map. The total number of question or answer doesn't give much sense since they are just expanded by the size of local user commity. We then turn our attention to the geo-distribution of answer&question per user. This time we observed that users in Western Europe like Germany, Austria and Finland are more likely to answer to a question on Stack Overflow.
 
 ### Questions and Answering Tendency of Different Country
 We can alse see the distribution of the Stack Overflow participation in a country-view.
@@ -188,7 +195,7 @@ From an global viewpoint, the size of Question and Answer data will have an coni
 ### Global Knowledge Transfer on Stack Overflow
 Since Stack Overflow is a global community, it is not surprised to receive answers from the other side of the globe. the interaction between question raiser and answerer in different country can be visualised in the following network graph.
 
-<iframe style="height: 500px;" src="assets/export/transfer_graph.html"></iframe>
+<iframe style="height: 500px; margin-top: -24px; margin-bottom: -12px;" src="assets/export/transfer_graph.html"></iframe>
 
 Note: Only the top ten most active countries on Stack Overflow (in terms of question and answer count) and Switzerland is included. Different country of focus can be selected in the dropdown menu.
 {: .description }
@@ -206,7 +213,9 @@ If you recall the programming language user personas from part 1, we decided to 
 
 <iframe class="plotly-plot stretch" src="assets/export/programmer_types_distribution.html"></iframe>
 
-According to our interpretations, frontend development seems to be quite popular around the world, with Nigeria turning out to be the number one country. It is also quite popular in Sri Lanka, compared to most other places. The Python/Scripting category separates the countries quite a bit more, and USA along with Canada, Finland, China and Chile having some of the most active users. The C# category is, perhaps surprisingly, dominated by South Africa while the scores for China and Nigeria are notably low. The most active country doing Java and App development seems to be Sri Lanka, which leaves most countries actually far behind. It's interesting that there are quite large differences even inside Europe, like Germany having quite a high score and Great Britain having a very low score. Indonesia, Sri Lanka and Bangladesh are some of the countries with people having the most backend developers and surprisingly the highest scores for low-level development come from Nepal and South Korea.
+According to our interpretations, frontend development seems to be quite popular around the world, with Nigeria turning out to be the number one country. It is also quite popular in Sri Lanka, compared to most other places. The Python/Scripting category separates the countries quite a bit more, and USA along with Canada, Finland, China and Chile having some of the most active users. The C# category is, perhaps surprisingly, dominated by South Africa while the scores for China and Nigeria are notably low.
+
+The most active country doing Java and App development seems to be Sri Lanka, which leaves most countries actually far behind. It's interesting that there are quite large differences even inside Europe, like Germany having quite a high score and Great Britain having a very low score. Indonesia, Sri Lanka and Bangladesh are some of the countries with people having the most backend developers and surprisingly the highest scores for low-level development come from Nepal and South Korea.
 
 {% include middle.html
   text="Let's Conclude"
