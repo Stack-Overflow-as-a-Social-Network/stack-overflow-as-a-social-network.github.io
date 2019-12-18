@@ -336,11 +336,6 @@
     return "translate(" + d.x + "," + d.y + ")";
   }
 
-  d3.select("#changedata")
-    .on("click", function () {
-      update_country('Poland')
-    })
-
   function update_country(newFocusedCountry) {
     // redefine data
     data = [
