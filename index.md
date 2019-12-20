@@ -48,6 +48,7 @@ Here are some of the interesting insights. We categorized them into three sectio
  text="User"
  description="What are the users really like?"
  video_url="assets/video/user.mp4"
+ image_url="assets/img/user.jpg"
 %}
 ### More Stack Overflow, better job success?
 To get the most basic idea of how do people use Stack Overflow, let's plot the visit frequency distribution of the survey respondents. We see that most people answering the survey use Stack Overflow quite often. This may, of course, be due to the sample being somewhat skewed since active Stack Overflow users are probably more inclined to answer the survey. 
@@ -102,6 +103,7 @@ We will come back to these "developer personas" in the third section, where we d
  text="Time"
  description="When do they use it?"
  video_url="assets/video/time.mp4"
+ image_url="assets/img/time.jpg"
 %}
 ### Yet, Some Questions remain unnoticed...
 The response rate to questions can be analyzed yearly. 
@@ -134,6 +136,7 @@ People from the Netherlands, France, and the United Kingdom seem to be the most 
  text="Country"
  description= "How are Stack Overflowers distributed around the world?"
  video_url="assets/video/country.mp4"
+ image_url="assets/img/country.jpg"
 %}
 ### Spotting the bigger Stack Overflower
 > *On a global level, the USA holds the biggest Stack Overflow user community and Sweden is the top country in terms of penetration as a percentage of the population.* 
@@ -240,6 +243,7 @@ The most active country doing Java and App development seems to be Sri Lanka, wh
  text="Let's Conclude"
  description="One sentence to conclude (kind of impossible)"
  video_url="assets/video/merry_christmas.mp4"
+ image_url="assets/img/merry_christmas.jpg"
 %}
 ```
 TL;DR There are a lot of things going on in the programming world.
