@@ -24,6 +24,12 @@ $findingcolors: (
   // box-sizing: border-box;
 }
 
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -60,10 +66,10 @@ p {
   left: 50%;
 }
 
-@mixin stretch-to-80vw() {
+@mixin stretch-to-66vw() {
   position: relative;
-  width: 80vw;
-  margin-left: -40vw;
+  width: 66vw;
+  margin-left: -33vw;
   left: 50%;
 }
 
@@ -74,7 +80,7 @@ iframe {
 }
 
 iframe.stretch {
-  @include stretch-to-80vw;
+  @include stretch-to-66vw;
 }
 
 iframe.plotly-plot {
@@ -116,7 +122,9 @@ iframe.plotly-plot {
     bottom: 7%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: none;
   }
+
   .arrow span {
     display: block;
     width: 16px;
@@ -145,6 +153,16 @@ iframe.plotly-plot {
       opacity: 0;
       transform: rotate(45deg) translate(20px, 20px);
     }
+  }
+
+  .loader {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    color: white;
+    text-align: center;
   }
 }
 
